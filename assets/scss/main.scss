@@ -1,0 +1,423 @@
+
+
+/* ------ custom mixins ------------ */
+
+@mixin flex-row($horizontal,$vertical) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: $vertical;
+    align-items: $vertical;
+    -ms-flex-align: $vertical;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: $horizontal;
+    -ms-flex-pack: $horizontal;
+    justify-content: $horizontal;
+}
+
+@mixin flex-column($horizontal,$vertical) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: $horizontal;
+    align-items: $horizontal;
+    -ms-flex-align: $horizontal;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: $vertical;
+    -ms-flex-pack: $vertical;
+    justify-content: $vertical;}
+
+    @mixin bullet-style {
+        padding: 0 10px;  /* li styles : remove bullet-points */
+
+        list-style-type: none;
+    }
+
+    @mixin hyperlink($color, $hover-color) { /* a href styles formatting */
+        text-decoration: none;
+
+        color: $color;
+        &:hover{
+            text-decoration: none;
+
+            color: $hover-color;
+        }
+    }
+
+    @mixin width($columns) { /* format card grid size */
+        width: calc(100% / $columns);
+    }
+
+    @mixin background($url, $size, $repeat, $position) { /* background images */
+        background-image: url($url);
+        background-repeat: $repeat; // no-repeat
+        background-position: $position; // center or e.g. center top
+        background-size: $size; // contain or cover
+    }
+
+
+    @mixin parallax ($url, $height) {
+        /* Set a specific height */
+        height: $height;
+        /* Url src to image used */
+
+        background-image: url($url);
+        background-repeat: no-repeat;
+        /* To create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+    }
+
+    /* ........ fonts ........................................ */
+
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900');
+    // @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+    // @import url('https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap');
+
+
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
+    @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+
+
+
+    /* ........ custom variables ........................................ */
+
+    $brand-font: 'Montserrat', sans-serif;
+    $nav-font: 'Didact Gothic', sans-serif;
+    $p-font: 'Didact Gothic', sans-serif;
+    $portfolio-title-font: 'Didact Gothic', sans-serif;
+    $text-color: #2c3e50;
+
+
+    /* ........ custom media queries ........................................ */
+
+    // $min-break-small: "only screen and (min-width : 576px)";
+    $min-break-small: "only screen and (min-width : 577px)";
+    $min-break-medium: "only screen and (min-width : 768px)";
+    $min-break-large: "only screen and (min-width : 900px)";
+    $min-break-xlarge: "only screen and (min-width : 1200px)";
+
+    $max-break-small: "only screen and (max-width : 576px)";
+    $max-break-medium: "only screen and (max-width : 899px)";
+
+
+
+
+
+    /* .............................. style properties ........................................ */
+
+
+
+
+    /* ............. applicable to whole body  ............. */
+
+
+    * {
+        font-family: 'Didact Gothic', sans-serif;
+    }
+
+    html {
+        ::selection {
+            background: #c5f4e0;
+        }
+    }
+
+    a {
+        @include hyperlink(#111111, #ED6B86);
+    }
+
+    .container-fluid {
+        margin: 0;
+    }
+
+    .img-fluid {
+        width: 100%;
+        max-width: 300px;
+        height: 100%;
+    }
+
+    /* ............. related to fonts  ....................................... */
+
+    header {
+        #branding {
+            font-family: $brand-font;
+        }
+        a {
+            font-family: $nav-font;
+        }
+    }
+
+    #branding {
+        letter-spacing: .15em;
+        text-transform: uppercase;
+
+        font-size: 30px;
+        font-weight: 700;
+        font-style: normal;
+        line-height: 1em;
+        &:hover{
+            color: #42b883 !important;
+            transition: all 2s ease-in-out;
+        }
+    }
+
+
+
+    h1 {
+        color: #222;
+
+        font-family: 'Didact Gothic', sans-serif;
+        font-size: 2.2em;
+        font-weight: 700;
+        font-style: normal;
+        line-height: 1.2em;
+    }
+
+    p {
+        margin: 0 0 1.6em;
+
+        letter-spacing: 0.5px;
+
+        color: rgb(51, 51, 51);
+
+        font-family: $p-font;
+        font-size: 14px;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    /* ............. portfolio page ............. */
+
+    .project_page {
+        .project_page--title {
+            font-family: $portfolio-title-font;
+            font-size: 3em !important;
+            font-weight: 400;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        h3 {
+            font-family: $portfolio-title-font;
+            font-weight: 400;
+        }
+    }
+
+
+    /* -----------------------------------------------------------------------------------------------
+
+    M e d i a Q u e r i e s
+
+    ------------------------------------------------------------------------------------------------ */
+
+
+    @media #{$max-break-small} {
+
+        /* ....... single project page ....... */
+
+        .project_page {
+
+            .project_page__slider_area {
+                // margin-top: 0 !important;
+                // margin-bottom: 3em !important;
+                // padding-bottom: 0 !important;
+            }
+
+            .project_page--back-to-gallery {
+                display: none;
+            }
+
+        }
+    }
+
+    @media #{$max-break-medium} {
+
+
+        /* ....... single project page ....... */
+
+        // #site .image {
+        //     margin-top: 0 !important;
+        //     margin-bottom: 3em !important;
+        //     padding-bottom: 0 !important;
+        // }
+
+    }
+
+    @media #{$min-break-medium} {
+
+        .home__wrapper {
+            -webkit-animation: animatedBackground 80s linear infinite;
+            -moz-animation: animatedBackground 80s linear infinite;
+            -ms-animation: animatedBackground 80s linear infinite;
+            -o-animation: animatedBackground 80s linear infinite;
+            animation: animatedBackground 80s linear infinite;
+        }
+
+        @keyframes animatedBackground {
+            0%, 100% {
+                background-position: 0% 40%;
+            }
+            50% {
+                background-position: 100% 40%;
+            }
+        }
+
+        /* ....... single project page ....... */
+
+        .slider_area__gallery {
+            height: 600px !important;
+
+            .slider_area__gallery img {
+                height: 100% !important;
+                width: auto !important;
+            }
+
+        }
+
+
+        /* ....... about page ....... */
+
+        .skills__section_fullstack{
+            .skills__section--card-list{
+                width: 90%;
+                margin: 2em auto;
+                .skills__section--card-tag {
+                    font-size: 2em !important;
+                    line-height: 0.8em  !important;
+                    font-family: 'Roboto', sans-serif !important;
+                    font-weight: 300 !important;
+                }
+            }
+        }
+
+        /* ....... about page ....... */
+
+        // #skills {
+        //     #skills-front {
+        //         div {
+        //             width: 80%;
+        //             margin: 2em auto;
+        //         }
+        //         p {
+        //             font-size: 2em;
+        //             line-height: 1em;
+        //         }
+        //     }
+        // }
+
+        /* ....... single project page ....... */
+
+
+        .project_page {
+            .project_page__main_content_area {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: start;
+                -ms-flex-align: start;
+                align-items: flex-start;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            }
+
+            .project_page__slider_area {
+                margin-top: 0 !important;
+                margin-bottom: 0;
+            }
+
+            .project_page--back-to-gallery {
+                margin-bottom: 2em !important;
+            }
+
+            .project_page__tags_area {
+                margin-top: 0 !important;
+            }
+        }
+
+    }
+
+    @media #{$min-break-large} {
+
+        .home__wrapper {
+            -webkit-animation: animatedBackground 80s linear infinite;
+            -moz-animation: animatedBackground 80s linear infinite;
+            -ms-animation: animatedBackground 80s linear infinite;
+            -o-animation: animatedBackground 80s linear infinite;
+            animation: animatedBackground 80s linear infinite;
+        }
+
+        /* ....... single project page ....... */
+
+        .project_page {
+            .project_page__project_description--text {
+                font-size: 0.9em !important;
+            }
+
+            .project_page__main_content_area {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: start;
+                -ms-flex-align: start;
+                align-items: flex-start;
+            }
+        }
+
+    }
+
+
+    @media #{$min-break-xlarge} {
+        .project_page__header--mobile {
+            display: none;
+        }
+
+        .project_page__header--xlarge {
+            display: block !important ;
+        }
+
+        .project_page__card_area {
+            padding-top: 3em;
+            // max-height: 600px;
+            // overflow: hidden !important;
+
+            .project_page__text_area {
+                overflow-y: scroll;
+                max-height: 700px;
+                &::-webkit-scrollbar
+                {
+                    width: 2px;  /* for vertical scrollbars */
+                    height: 12px; /* for horizontal scrollbars */
+                    padding-right: 20px;
+                }
+
+                &::-webkit-scrollbar-track
+                {
+                    background: rgba(0, 0, 0, 0.1);
+                    height: 12px;
+                }
+
+                &::-webkit-scrollbar-thumb
+                {
+                    background: rgba(0, 0, 0, 0.5);
+                    height: 12px;
+                }
+            }
+        }
+
+        .project_page__slider_area {
+            padding-top: 8em;
+            // background: aliceblue;
+            // display: flex;
+            // align-items: center;
+            // justify-content: center;
+        }
+
+    }
