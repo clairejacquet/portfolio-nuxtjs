@@ -114,7 +114,7 @@ export default {
 					name: 'This portfolio in Nuxt.js',
 					links: [
 						{
-							url: 'https://github.com/clairedonut/portfolio-nuxtjs',
+							url: 'https://github.com/clairejacquet/portfolio-nuxtjs',
 							text: 'github',
 							icon: 'fab fa-github'
 						},

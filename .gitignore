@@ -1,5 +1,5 @@
-pages/OLD/*
-assets/OLD/*
+pages/OLD/
+assets/OLD/
 node_modules
 static/
 dist/docs
